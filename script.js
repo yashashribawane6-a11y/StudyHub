@@ -79,7 +79,7 @@ function sendMessage() {
   setTimeout(() => {
     let bot = document.createElement("div");
     bot.className = "message bot";
-    bot.textContent = "Hi! Demo chal raha hai 😊";
+    bot.textContent = "Hi!How can i help you 😊";
     document.getElementById("chatMessages").appendChild(bot);
   }, 800);
 }
@@ -87,3 +87,4 @@ function sendMessage() {
 // Load on start
 showSection("chat");
 renderContacts();
+
