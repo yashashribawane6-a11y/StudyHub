@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="mobile-menu-btn" onclick="toggleSidebar()">☰</div>
+  <div class="mobile-menu-btn" onclick="toggleSidebar()">Menu</div>
 
   <div class="container">
     <header class="header">
@@ -18,7 +18,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h2>AskMe</h2>
-        <span class="close-btn" onclick="toggleSidebar()">✕</span>
+        <span class="close-btn" onclick="toggleSidebar()">X</span>
       </div>
       <ul>
         <li onclick="startNewChat();toggleSidebar()">New Chat</li>
@@ -26,11 +26,6 @@
         <li onclick="showSection('contacts');toggleSidebar()">Contacts</li>
         <li onclick="showSection('complaints');toggleSidebar()">Complaints</li>
       </ul>
-      <div id="adminControls" style="display:none;padding:15px;">
-        <button onclick="addQuickNote()" class="add-btn">+ Quick Note</button>
-        <button onclick="document.getElementById('fileUpload').click()" class="add-btn">+ Upload File</button>
-        <button onclick="addContactPrompt()" class="add-btn">+ Add Contact</button>
-      </div>
     </aside>
 
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
@@ -44,17 +39,28 @@
         </div>
       </div>
 
-      <div id="library" class="section"><h2>Library</h2><div id="libraryItems"></div></div>
+      <!-- LIBRARY SECTION - Upload button andar hai -->
+      <div id="library" class="section">
+        <h2>Library</h2>
+        <div id="adminUpload" style="display:none; margin:15px 0;">
+          <button onclick="document.getElementById('fileUpload').click()" class="add-btn">
+            + Upload File (PDF, Photo, Video, Doc – sab chalega)
+          </button>
+        </div>
+        <div id="libraryItems"></div>
+      </div>
+
       <div id="contacts" class="section"><h2>Contacts</h2><div id="contactList"></div></div>
       <div id="complaints" class="section"><h2>Complaints</h2><button onclick="openComplaintForm()" class="add-btn">+ Add Complaint</button><div id="complaintList"></div></div>
     </section>
   </div>
 
-  <input type="file" id="fileUpload" style="display:none" onchange="uploadFile(this.files[0])" accept=".txt,.pdf,.jpg,.png"/>
+  <!-- Hidden file input -->
+  <input type="file" id="fileUpload" style="display:none" onchange="uploadFile(this.files[0])" accept="*/*" />
 
   <div id="complaintModal" class="modal" style="display:none;">
     <div class="modal-content">
-      <span class="close" onclick="closeComplaintForm()">✕</span>
+      <span class="close" onclick="closeComplaintForm()">X</span>
       <h3>Add Complaint</h3>
       <input type="text" id="complaintSubject" placeholder="Subject"/><br><br>
       <textarea id="complaintDesc" placeholder="Description"></textarea><br><br>
